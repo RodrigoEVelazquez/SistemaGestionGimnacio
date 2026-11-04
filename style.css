@@ -1,0 +1,380 @@
+/* ==============================
+   ESTILOS GENERALES
+================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f1f4f8;
+    color: #263746;
+    line-height: 1.5;
+}
+
+
+/* ==============================
+   HEADER / NAVBAR
+================================= */
+
+header {
+    background-color: #163a5a;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    max-width: 1400px;
+    margin: auto;
+    padding: 16px 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar h2 {
+    color: #ffffff;
+    font-size: 23px;
+    font-weight: 700;
+}
+
+
+/* ==============================
+   MENÚ
+================================= */
+
+.menu {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.menu li a {
+    display: block;
+    text-decoration: none;
+    color: #dce7f0;
+
+    padding: 10px 13px;
+    border-radius: 6px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: 0.3s;
+}
+
+.menu li a:hover {
+    background-color: #2c5273;
+    color: #ffffff;
+}
+
+
+/* ==============================
+   CONTENIDO PRINCIPAL
+================================= */
+
+main {
+    max-width: 1400px;
+    margin: auto;
+    padding: 20px;
+}
+
+
+/* ==============================
+   SECCIÓN INICIO
+================================= */
+
+.seccion-inicio {
+    min-height: 380px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    padding: 60px;
+
+    background: linear-gradient(135deg, #163a5a, #2c5b7d);
+
+    border-radius: 12px;
+    margin-bottom: 30px;
+}
+
+.seccion-inicio h1 {
+    max-width: 700px;
+    font-size: 42px;
+    line-height: 1.2;
+    color: #ffffff;
+    margin-bottom: 18px;
+}
+
+.seccion-inicio p {
+    max-width: 650px;
+    font-size: 17px;
+    color: #e0eaf2;
+    margin-bottom: 25px;
+}
+
+.seccion-inicio a {
+    display: inline-block;
+    text-decoration: none;
+
+    background-color: #ffffff;
+    color: #163a5a;
+
+    padding: 12px 22px;
+    border-radius: 7px;
+
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.seccion-inicio a:hover {
+    background-color: #dce7f0;
+    transform: translateY(-2px);
+}
+
+
+/* ==============================
+   SECCIONES ADMINISTRATIVAS
+================================= */
+
+main section:not(.seccion-inicio) {
+    margin: 25px 0;
+    padding: 30px;
+
+    background-color: #ffffff;
+    border-radius: 10px;
+
+    border: 1px solid #e0e6ed;
+
+    box-shadow: 0 3px 12px rgba(30, 55, 80, 0.06);
+}
+
+
+/* ==============================
+   TÍTULOS
+================================= */
+
+main section h2 {
+    color: #163a5a;
+    font-size: 26px;
+    margin-bottom: 8px;
+}
+
+main section > p {
+    color: #718096;
+    margin-bottom: 25px;
+}
+
+main section h3 {
+    color: #344e60;
+    font-size: 18px;
+    margin-top: 25px;
+    margin-bottom: 12px;
+}
+
+
+/* ==============================
+   FORMULARIOS
+================================= */
+
+form {
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    color: #344e60;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 11px 12px;
+
+    border: 1px solid #cbd5df;
+    border-radius: 6px;
+
+    background-color: #ffffff;
+    color: #263746;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+
+    outline: none;
+    transition: 0.2s;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #2c6b96;
+    box-shadow: 0 0 0 3px rgba(44, 107, 150, 0.12);
+}
+
+input::placeholder {
+    color: #a0acb8;
+}
+
+
+/* ==============================
+   BOTONES
+================================= */
+
+button {
+    border: none;
+
+    background-color: #1f4e79;
+    color: #ffffff;
+
+    padding: 11px 18px;
+    border-radius: 6px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+    margin-top: 8px;
+
+    transition: 0.2s;
+}
+
+button:hover {
+    background-color: #163a5a;
+    transform: translateY(-1px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+
+/* ==============================
+   TABLAS
+================================= */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+
+    margin-top: 18px;
+
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+thead {
+    background-color: #163a5a;
+    color: #ffffff;
+}
+
+th {
+    padding: 13px 15px;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #e5eaf0;
+
+    color: #405466;
+    font-size: 14px;
+}
+
+tbody tr:hover {
+    background-color: #f3f7fa;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* ==============================
+   FOOTER
+================================= */
+
+footer {
+    margin-top: 40px;
+    background-color: #163a5a;
+
+    text-align: center;
+    padding: 22px;
+
+    color: #dce7f0;
+}
+
+footer p {
+    font-size: 13px;
+}
+
+
+/* ==============================
+   RESPONSIVE
+================================= */
+
+@media (max-width: 768px) {
+
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+        padding: 18px;
+    }
+
+    .menu {
+        justify-content: center;
+    }
+
+    .menu li a {
+        padding: 8px 10px;
+        font-size: 13px;
+    }
+
+    main {
+        padding: 12px;
+    }
+
+    .seccion-inicio {
+        padding: 35px 25px;
+        min-height: 320px;
+    }
+
+    .seccion-inicio h1 {
+        font-size: 32px;
+    }
+
+    main section:not(.seccion-inicio) {
+        padding: 20px;
+        margin: 18px 0;
+    }
+
+    main section h2 {
+        font-size: 23px;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
