@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Sistema Gimnasio</title>
+    
+    
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    
+ <header>
+<!-- menu  -->
+    <nav class="navbar">
+
+       
+          <h2>Sistema Gym</h2>  
+       
+        <ul class="menu">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#socios">Socios</a></li>
+            <li><a href="#pases">Pases</a></li>
+            <li><a href="#inscripciones">Inscripciones</a></li>
+            <li><a href="#actividades">Actividades</a></li>
+            <li><a href="#horarios">Horarios</a></li>
+            <li><a href="#actividadXHorario">Actividad por horario</a></li>
+            <li><a href="#actividadXSocio">Socio en actividad</a></li>            
+        </ul>
+
+    </nav>
+
+ </header>
+
+<main>
+
+    <!-- Inicio -->
+     <section id="inicio" class="seccion-inicio">
+
+       
+            <h1>Bienvenidos al Sistema de Gestión del Gimnasio</h1>
+
+                <p>
+                     Sistema de gestión para administrar socios,
+                    actividades e inscripciones del gimnasio.
+                </p>
+
+        
+        <a href="#socios">Gestionar socios</a>
+
+     </section>
+
+     <!-- Socios -->
+      <section id="socios" class="seccion-socios">
+
+        <h2> Socios </h2>
+
+           <p>
+               Administración de los socios registrados en el gimnasio.
+           </p>
+
+       <!--Agregar socios-->
+        <h3>Registrar socio</h3>
+
+             <p>
+                Agregar nuevo socio al sistema
+            </p>
+
+             <form id="formSocio" onsubmit="GuardarSocio(); return false;">
+
+               <input type="hidden" id="txtIdSocio">
+
+                <label for="nombreSocio">Nombre: </label>
+               <input type="text" name="nombre" id="nombreSocio" required>
+
+                <label for="apellido">Apellido: </label>
+               <input type="text" name="apellido" id="apellido" required>
+
+               <label for="telefono">Teléfono: </label>
+               <input type="tel" name="telefono" id="telefono" required>
+
+               <label for="email">Email: </label>
+               <input type="email" name="email" id="email" required>
+
+               <label for="dni">DNI: </label>
+               <input type="text" name="dni" id="dni" required>
+
+               <label for="fecha_nacimiento">Fecha de nacimiento: </label>
+               <input type="date" name="fechaNacimiento" id="fecha_nacimiento" required>
+
+               <label for="calle">Calle: </label>
+               <input type="text" name="calle" id="calle">
+
+               <label for="altura">Altura: </label>
+               <input type="number" name="altura" id="altura">
+
+               <label for="barrio">Barrio: </label>
+               <input type="text" name="barrio" id="barrio">
+
+               <button type="submit">Guardar socio</button>
+
+               <button type="button" onclick="ActualizarSocio()">Editar</button>
+
+               <button type="button" onclick="limpiarFormularioSocio()">Limpiar</button>
+
+
+             </form>
+
+
+             <!-- Buscar Socios -->
+
+
+        <h3>Buscar socio</h3>
+
+            <p> 
+             Buscar un socio registrado
+            </p>
+
+            <form id="formBuscarSocio" onsubmit="buscarSocio(); return false;">
+
+                <label for="id_socio">ID del socio: </label>
+                <input type="number" name="id_socio" id="id_socio" required>
+
+                <button type="submit">Buscar socio</button>
+
+            </form>
+
+            <div id="resultadoBusquedaSocio">     
+
+
+            </div>
+
+
+             <!-- Ver Socios -->
+
+            <h3>Ver socios</h3>
+
+             <p>
+                Ver listado de Socios
+             </p>
+
+            <button type="button" id="btnVerSocios" onclick="listarSocios()">Ver socios</button>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>DNI</th>
+                        <th>Teléfono</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tablaSocios">
+                    <!-- Filas generadas por JavaScript -->
+                </tbody>
+            </table>
+
+
+      </section>
+
+
+
+      <!--Pase-->
+
+
+     <section id="pases" class="seccion-pases">
+
+        <h2>Pases</h2>
+
+        <p>
+            Registrar y administrar los pases de los socios del gimnasio
+        </p>
+
+<!-- Registrar Pase-->
+
+        <h3>Registrar pases</h3>
+
+        <p>Registrar un nuevo pase</p>
+
+        <form id="formPase" onsubmit="GuardarPase(); return false;">
+
+               <input type="hidden" id="txtIdPase">
+
+            <label for="nombrePase">Nombre: </label>
+            <input type="text" name="nombre" id="nombrePase" required>
+
+            <label for="precioPase">Precio: </label>
+            <input type="number" name="precio" id="precioPase" step="0.01" min="0" required>
+
+            <button type="submit">Guardar pase</button>
+
+               <button type="button" onclick="ActualizarPase()">Editar</button>
+
+               <button type="button" onclick="limpiarFormularioPase()">Limpiar</button>
+
+        </form>
+
+<!--Buscar Pase por id-->
+
+        <h3>Buscar pase</h3>
+
+            <p>
+                Buscar un pase registrado
+            </p>
+
+            
+           <form id="formbuscarPase" onsubmit="buscarPase(); return false;">
+            
+            <label for="id_pase"> ID del pase: </label>
+            <input type="number" name="id_pase" id="id_pase" required>
+
+            <button type="submit">Buscar pase</button>
+
+
+           </form>
+
+           <div id="resultadoBusquedaPase"> 
+
+           </div>
+
+<!--Ver pases -->    
+
+           <h3>Ver pases</h3>
+
+             <p>
+               Ver listado de pases
+             </p>
+
+
+             <button type="button" id="btnVerPases" onclick="listarPases()">Ver pases</button>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tablaPases">
+
+                    <!-- Filas generadas por JavaScript -->
+
+                </tbody>
+            </table>
+
+     </section>
+
+
+     <!-- Inscripciones -->
+
+     <section id="inscripciones" class="seccion-inscripciones">
+
+        <h2>Inscripciones</h2>
+
+            <p>
+              Registrar y administrar las inscripciones de los socios al gimnasio 
+            </p>
+
+<!-- registrar Inscripciones -->
+            <h3>Registrar inscripciones</h3>
+
+            <p>
+                Registrar una nueva inscripción de un socio
+            </p>
+
+
+        <form id="formInscripciones" onsubmit="GuardarInscripcion(); return false;">
+
+               <input type="hidden" id="txtIdInscripcion">
+
+            <label for="idSocioInscripcion">ID del socio: </label>
+            <input type="number" name="id_socio" id="idSocioInscripcion" required>
+
+            <label for="idpaseInscripcion">ID del pase: </label>
+            <input type="number" name="id_pase" id="idpaseInscripcion" required>
+
+            <label for="fecha_inicio"> Fecha de inicio: </label>
+            <input type="date" name="fecha_inicio" id="fecha_inicio" required>
+
+            <label for="fecha_vencimiento"> Fecha de vencimiento: </label>
+            <input type="date" name="fecha_vencimiento" id="fecha_vencimiento" required>
+
+            <label for="estado">Estado: </label>
+            <select name="estado" id="estado" required>
+
+                <option value="">Seleccionar estado</option>
+                <option value="Activa">Activa</option>
+                <option value="Cancelada">Cancelada</option>
+                <option value="Vencida">Vencida</option>
+
+            </select>
+
+            <button type="submit">Guardar inscripción</button>
+
+               <button type="button" onclick="ActualizarInscripcion()">Editar</button>
+
+               <button type="button" onclick="limpiarFormularioInscripcion()">Limpiar</button>
+        </form>
+
+
+<!-- buscar Inscripciones -->
+
+
+        <h3>Buscar inscripciones</h3>
+
+            <p>
+                Buscar una inscripción registrada
+            </p>
+
+            
+           <form id="formbuscarInscripcion" onsubmit="buscarInscripcion(); return false;">
+            
+            <label for="id_inscripcion"> ID de la inscripción: </label>
+            <input type="number" name="id_inscripcion" id="id_inscripcion" required>
+
+            <button type="submit">Buscar inscripción</button>
+
+
+           </form>
+
+           <div id="resultadoBusquedaInscripcion"> 
+
+           </div>
+
+  <!--Ver inscripciones -->    
+
+        <h3>Ver inscripciones</h3>
+
+         <p>
+            Ver listado de inscripciones
+        </p>
+
+
+             <button type="button" id="btnVerInscripciones" onclick="listarInscripciones()">Ver inscripciones</button>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>ID del socio</th>
+                        <th>ID del pase</th>
+                        <th>Fecha de inicio</th>
+                        <th>Fecha de vencimiento</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tablaInscripciones">
+
+                    <!-- Filas generadas por JavaScript -->
+
+                </tbody>
+            </table>
+
+
+     </section>
+
+      
+     <!-- Actividades -->
+
+
+     <section id="actividades" class="seccion-actividades">
+
+       <h2>Actividades</h2>
+        
+            <p> 
+            Administración de las actividades disponibles en el gimnasio.
+            </p>
+
+            <!-- agregar Actividades -->
+        <h3> Registrar actividad</h3>
+
+            <p>
+                Agregar una nueva actividad.
+            </p>
+
+           <form id="formActividades" onsubmit="GuardarActividad(); return false;">
+
+               <input type="hidden" id="txtIdActividad">
+
+            <label for="nombreActividad">Nombre:</label>
+            <input type="text" name="nombre" id="nombreActividad" required>
+
+            <label for="descripcion">Descripción:</label>
+            <textarea name="descripcion" id="descripcion" maxlength="50" required></textarea>
+
+            <button type="submit">Guardar actividad</button>
+
+               <button type="button" onclick="ActualizarActividad()">Editar</button>
+
+               <button type="button" onclick="limpiarFormularioActividad()">Limpiar</button>
+
+
+           </form>
+          
+           <!-- buscar Actividades por id -->
+
+            <h3>Buscar actividades</h3>
+            <p>
+                Buscar una actividad registrada
+            </p>
+
+           <form id="formbuscarActividad" onsubmit="buscarActividad(); return false;">
+            
+            <label for="id_actividad"> ID de la actividad: </label>
+            <input type="number" name="id_actividad" id="id_actividad" required>
+
+            <button type="submit">Buscar actividad</button>
+
+
+           </form>
+
+           <div id="resultadoBusquedaActividad"> 
+
+           </div>
+           
+
+           <!-- Ver Actividades -->
+        <h3>Ver actividades</h3>
+
+        <p>
+            Ver listado de Actividades
+        </p>
+
+            <button type="button" id="btnVerActividades" onclick="listarActividades()">Ver actividades</button>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tablaActividades">
+
+                    <!-- Filas generadas por JavaScript -->
+
+                </tbody>
+            </table>
+
+
+     </section>
+
+     
+<!--Horario-->
+
+
+     <section id="horarios" class="seccion-horarios">
+
+        <h2>Horarios</h2>
+
+        <p>
+            Registrar y administrar los horarios
+        </p>
+
+<!-- Registrar Horario-->
+
+         <h3>Registrar horario</h3>
+
+        <p>Registrar un nuevo horario</p>
+
+        <form id="formHorario" onsubmit="GuardarHorario(); return false;">
+
+               <input type="hidden" id="txtIdHorario">
+
+            <label for="dia">Día: </label>
+            <select name="dia" id="dia" required>
+           
+                <option value="">Seleccionar día</option>
+                <option value="lunes">Lunes</option>
+                <option value="martes">Martes</option>
+                <option value="miercoles">Miércoles</option>
+                <option value="jueves">Jueves</option>
+                <option value="viernes">Viernes</option>
+                <option value="sabado">Sábado</option>
+                <option value="domingo">Domingo</option>
+                <option value="lunes a domingo">Lunes a domingo</option>
+
+            </select>
+
+            <label for="desde">Desde: </label>
+            <input type="time" name="desde" id="desde" required>
+
+             <label for="hasta">Hasta: </label>
+            <input type="time" name="hasta" id="hasta" required>
+
+            <button type="submit">Guardar horario</button>
+
+               <button type="button" onclick="ActualizarHorario()">Editar</button>
+
+               <button type="button" onclick="limpiarFormularioHorario()">Limpiar</button>
+
+        </form>
+<!--Buscar horario por id-->
+
+        <h3>Buscar horario</h3>
+
+             <p>
+                Buscar un horario registrado
+             </p>
+
+            
+             <form id="formbuscarhorario" onsubmit="buscarHorario(); return false;">
+            
+             <label for="id_horario"> ID del horario: </label>
+             <input type="number" name="id_horario" id="id_horario" required>
+
+             <button type="submit">Buscar horario</button>
+
+             </form>
+
+             <div id="resultadoBusquedaHorario"> 
+
+             </div>
+
+
+<!--Ver horarios -->    
+
+           <h3>Ver horarios</h3>
+
+             <p>
+               Ver listado de horarios
+             </p>
+
+
+             <button type="button" id="btnVerHorarios" onclick="listarHorarios()">Ver horarios</button>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Día</th>
+                        <th>Desde</th>
+                        <th>Hasta</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tablaHorarios">
+
+                    <!-- Filas generadas por JavaScript -->
+
+                </tbody>
+            </table>
+
+     </section>
+
+
+   <!-- Actividad por horario -->
+
+   
+     <section id="actividadXHorario" class="seccion-actividad-horario">
+
+         <h2>Asignar horario a una actividad</h2>
+
+         <p>Vincular una actividad con un horario existente.</p>
+
+         <form id="formActividadXHorario" onsubmit="GuardarActividadHorario(); return false;">
+
+             <label for="idActividad">Actividad:</label>
+             <select name="id_actividad" id="idActividad" required>
+                <option value="">Seleccionar actividad</option>
+             </select>
+
+             <label for="idHorario">Horario:</label>
+             <select name="id_horario" id="idHorario" required>
+                <option value="">Seleccionar horario</option>
+             </select>
+
+             <button type="submit">Guardar asignación</button>
+
+         </form>
+
+     </section>
+
+
+   <!-- Socio en actividad -->
+
+
+     <section id="actividadXSocio" class="seccion-actividad-socio">
+
+         <h2>Inscribir socio en una actividad</h2>
+
+         <p>Anotar a un socio en una actividad del gimnasio.</p>
+
+         <form id="formActividadXSocio" onsubmit="GuardarActividadSocio(); return false;">
+
+             <label for="idActividadSocio">Actividad:</label>
+             <select name="id_actividad" id="idActividadSocio" required>
+                <option value="">Seleccionar actividad</option>
+             </select>
+
+             <label for="idSocioActividad">Socio:</label>
+             <select name="id_socio" id="idSocioActividad" required>
+                <option value="">Seleccionar socio</option>
+             </select>
+
+             <button type="submit">Guardar inscripción</button>
+
+         </form>
+
+     </section>
+
+
+</main>
+
+
+<!-- Pie de pag -->
+
+
+<footer>
+
+        <p> 
+            © 2026 Sistema Gym - Proyecto Integrador
+        </p>
+
+ </footer>
+
+
+
+
+    <script src="app.js"></script>
+</body>
+</html>
